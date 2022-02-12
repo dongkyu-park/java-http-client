@@ -9,12 +9,13 @@ import java.net.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        URL url = new URL("http://www.naver.com");
+        URL url = new URL("https://www.naver.com");
         Request request = initRequestToURL(url);
 
-        SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
-        SSLSocket socket = (SSLSocket) factory.createSocket(url.getHost(), 443);
-//        Socket socket = new Socket(url.getHost(), 80);
+//        SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
+//        SSLSocket socket = (SSLSocket) factory.createSocket(url.getHost(), 443);
+        Socket socket = new Socket(url.getHost(), 443);
+        System.out.println(socket.isConnected());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintStream out = new PrintStream(socket.getOutputStream());
